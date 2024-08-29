@@ -4,7 +4,7 @@ class EntriesController < ApplicationController
   def create
     entry = Entry.new(entry_params)
     if entry.save
-      trigger_webhooks(entry)
+      trigger_webhooks(entry.id)
       render json: entry, status: :created
     else
       render json: entry.errors, status: :unprocessable_entity
@@ -13,7 +13,7 @@ class EntriesController < ApplicationController
 
   def update
     if @entry.update(entry_params)
-      trigger_webhooks(@entry)
+      trigger_webhooks(@entry.id)
       render json: @entry, status: :ok
     else
       render json: @entry.errors, status: :unprocessable_entity
@@ -30,7 +30,7 @@ class EntriesController < ApplicationController
     params.require(:entry).permit(:name, :data)
   end
 
-  def trigger_webhooks(entry)
-    WebhookNotifier.notify(entry)
+  def trigger_webhooks(entry_id)
+    WebhookNotifier.notify(entry_id)
   end
 end

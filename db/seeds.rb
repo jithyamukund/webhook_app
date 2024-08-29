@@ -9,6 +9,6 @@
 #   end
 Webhook.create([
                  { url: "https://jsonplaceholder.typicode.com/posts", secret_key: "secret123", enabled: true },
-                 { url: "https://api2.example.com/webhook", secret_key: "secret456", enabled: true },
+                 { url: "https://jsonplaceholder.typicode.com/posts", secret_key: "secret456", enabled: true },
                  { url: "https://api3.example.com/webhook", secret_key: "secret456", enabled: false },
                ])
