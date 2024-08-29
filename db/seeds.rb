@@ -7,3 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+Webhook.create([
+                 { url: "https://jsonplaceholder.typicode.com/posts", secret_key: "secret123", enabled: true },
+                 { url: "https://api2.example.com/webhook", secret_key: "secret456", enabled: true },
+                 { url: "https://api3.example.com/webhook", secret_key: "secret456", enabled: false },
+               ])
